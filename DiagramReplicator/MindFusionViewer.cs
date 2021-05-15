@@ -1,18 +1,16 @@
 ﻿using MindFusion.Diagramming;
+using MindFusion.Diagramming.Layout;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace DiagramReplicator
 {
     public partial class MindFusionViewer : Form
     {
+        XmlDocument xmltest;
         public MindFusionViewer()
         {
             InitializeComponent();
@@ -22,14 +20,13 @@ namespace DiagramReplicator
 
         private void MindFusionViewer_Load(object sender, EventArgs e)
         {
-            this.diagram1.DefaultShape = MindFusion.Diagramming.Shapes.Rectangle;
+            this.diagram2.DefaultShape = MindFusion.Diagramming.Shapes.Rectangle;
         }
 
         private void diagramView2_Click(object sender, EventArgs e)
         {
-            ShapeNode b = diagram1.Factory.CreateShapeNode(10, 10, 40, 20);
+            ShapeNode b = diagram2.Factory.CreateShapeNode(10, 10, 40, 20);
             b.Text = "This is a node";
-            //b.TextColor = Color.Red;
             b.Font = new Font("Times New Roman", 6, GraphicsUnit.World);
         }
 
@@ -41,6 +38,33 @@ namespace DiagramReplicator
         private void shapeToolBar2_ButtonClick(object sender, ToolBarButtonClickEventArgs e)
         {
 
+        }
+
+        public void setJsonContent(string content)
+        {
+            xmltest = new XmlDocument();
+            xmltest.LoadXml(content);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            //this.diagram1.DefaultShape = Shapes.Rectangle;
+            Dictionary<string, DiagramNode> nodeMap = new Dictionary<string, DiagramNode>();
+            RectangleF bounds = new RectangleF(0, 0, 18, 6);
+
+            XmlNodeList nodes = xmltest.SelectNodes("/ArrayOfDiagramElements/DiagramElements/elementName");
+            foreach (XmlElement node in nodes)
+            {
+                ShapeNode diagramNode = diagram2.Factory.CreateShapeNode(bounds);
+                nodeMap[node.GetAttribute("id")] = diagramNode;
+                diagramNode.Text = node.InnerText;
+            }
+
+            // Arrange the graph
+            LayeredLayout layout = new LayeredLayout();
+            layout.LayerDistance = 12;
+            layout.Arrange(diagram2);
         }
     }
 }
