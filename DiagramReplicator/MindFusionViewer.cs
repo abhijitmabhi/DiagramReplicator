@@ -10,7 +10,7 @@ namespace DiagramReplicator
 {
     public partial class MindFusionViewer : Form
     {
-        XmlDocument xmltest;
+        private XmlDocument xmlDiagram;
         public MindFusionViewer()
         {
             InitializeComponent();
@@ -25,9 +25,9 @@ namespace DiagramReplicator
 
         private void diagramView2_Click(object sender, EventArgs e)
         {
-            ShapeNode b = diagram2.Factory.CreateShapeNode(10, 10, 40, 20);
-            b.Text = "This is a node";
-            b.Font = new Font("Times New Roman", 6, GraphicsUnit.World);
+            //ShapeNode b = diagram2.Factory.CreateShapeNode(10, 10, 40, 20);
+            //b.Text = "This is a node";
+            //b.Font = new Font("Times New Roman", 6, GraphicsUnit.World);
         }
 
         private void shapeToolBar_shapeClicked(object sender, MindFusion.Diagramming.ShapeEventArgs e)
@@ -42,8 +42,8 @@ namespace DiagramReplicator
 
         public void setJsonContent(string content)
         {
-            xmltest = new XmlDocument();
-            xmltest.LoadXml(content);
+            xmlDiagram = new XmlDocument();
+            xmlDiagram.LoadXml(content);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -51,9 +51,9 @@ namespace DiagramReplicator
             base.OnLoad(e);
             //this.diagram1.DefaultShape = Shapes.Rectangle;
             Dictionary<string, DiagramNode> nodeMap = new Dictionary<string, DiagramNode>();
-            RectangleF bounds = new RectangleF(0, 0, 18, 6);
+            var bounds = new RectangleF(0, 0, 30, 20);
 
-            XmlNodeList nodes = xmltest.SelectNodes("/ArrayOfDiagramElements/DiagramElements/elementName");
+            XmlNodeList nodes = xmlDiagram.SelectNodes("/ArrayOfDiagramElements/DiagramElements/elementName");
             foreach (XmlElement node in nodes)
             {
                 ShapeNode diagramNode = diagram2.Factory.CreateShapeNode(bounds);

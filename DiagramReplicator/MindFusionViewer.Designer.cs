@@ -41,9 +41,9 @@ namespace DiagramReplicator
             this.ruler2.AllowDrop = true;
             this.ruler2.Controls.Add(this.diagramView2);
             this.ruler2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ruler2.Location = new System.Drawing.Point(0, 152);
+            this.ruler2.Location = new System.Drawing.Point(29, 118);
             this.ruler2.Name = "ruler2";
-            this.ruler2.Size = new System.Drawing.Size(985, 560);
+            this.ruler2.Size = new System.Drawing.Size(1721, 844);
             this.ruler2.TabIndex = 0;
             this.ruler2.Text = "ruler2";
             this.ruler2.TextColor = System.Drawing.SystemColors.ControlText;
@@ -53,9 +53,9 @@ namespace DiagramReplicator
             this.diagramView2.Diagram = this.diagram2;
             this.diagramView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramView2.LicenseKey = null;
-            this.diagramView2.Location = new System.Drawing.Point(18, 18);
+            this.diagramView2.Location = new System.Drawing.Point(93, 41);
             this.diagramView2.Name = "diagramView2";
-            this.diagramView2.Size = new System.Drawing.Size(967, 542);
+            this.diagramView2.Size = new System.Drawing.Size(1628, 803);
             this.diagramView2.TabIndex = 3;
             this.diagramView2.Text = "diagramView2";
             this.diagramView2.Click += new System.EventHandler(this.diagramView2_Click);
@@ -73,14 +73,14 @@ namespace DiagramReplicator
             this.shapeToolBar2.ShapeFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.shapeToolBar2.Shapes = null;
             this.shapeToolBar2.ShowToolTips = true;
-            this.shapeToolBar2.Size = new System.Drawing.Size(987, 156);
+            this.shapeToolBar2.Size = new System.Drawing.Size(1781, 96);
             this.shapeToolBar2.TabIndex = 1;
             this.shapeToolBar2.ShapeClicked += new System.EventHandler<MindFusion.Diagramming.ShapeEventArgs>(this.shapeToolBar_shapeClicked);
             this.shapeToolBar2.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.shapeToolBar2_ButtonClick);
             // 
             // MindFusionViewer
             // 
-            this.ClientSize = new System.Drawing.Size(987, 713);
+            this.ClientSize = new System.Drawing.Size(1781, 1027);
             this.Controls.Add(this.shapeToolBar2);
             this.Controls.Add(this.ruler2);
             this.Name = "MindFusionViewer";

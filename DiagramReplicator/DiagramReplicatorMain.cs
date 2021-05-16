@@ -8,7 +8,7 @@ namespace DiagramReplicator
 {
     public class DiagramReplicatorMain
     {
-        public List<DiagramElements> diagramElementsList;
+        private List<DiagramElements> diagramElementsList;
         public void EA_Connect(EA.Repository Rep)
         {
 
